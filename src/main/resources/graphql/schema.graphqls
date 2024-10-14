@@ -1,0 +1,41 @@
+scalar UUID
+scalar DateTime
+
+type User {
+    userId: UUID!
+    email: String!
+    passwordHash: String
+    oAuthProvider: String
+    oAuthId: String
+    role: UserRole
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+
+enum UserRole {
+    ADMIN
+    USER
+}
+
+type Image {
+    imageId: ID!
+    userId: UUID!
+    filePath: String!
+    uploadedAt: DateTime!
+}
+
+type ElaResults {
+    id: ID!
+    imageId: ID!
+    tamperingLikelihood: Float
+    detectedEla: Boolean
+    processedAt: DateTime
+}
+
+type NoiseAnalysisResults {
+    id: ID!
+    imageId: ID!
+    tamperingLikelihood: Float
+    detectedNoise: Boolean
+    processedAt: String!
+}
