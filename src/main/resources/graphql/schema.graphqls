@@ -1,20 +1,41 @@
 scalar UUID
 scalar DateTime
+scalar OffsetDateTime
 
 type User {
     userId: UUID!
-    email: String!
+    email: String
     passwordHash: String
     oAuthProvider: String
     oAuthId: String
     role: UserRole
-    createdAt: DateTime
-    updatedAt: DateTime
+    createdAt: OffsetDateTime
+    updatedAt: OffsetDateTime
 }
 
 enum UserRole {
     ADMIN
     USER
+}
+
+input AuthSignUpInput {
+    email: String
+    passwordHash: String
+    oAuthProvider: String
+    oAuthId: String
+    role: UserRole = USER
+}
+
+input AuthSignInInput {
+    email: String
+    passwordHash: String
+    oAuthProvider: String
+    oAuthId: String
+}
+
+type AuthSignUpPayload {
+    user: User
+    accessToken: String
 }
 
 type Image {
@@ -38,4 +59,15 @@ type NoiseAnalysisResults {
     tamperingLikelihood: Float
     detectedNoise: Boolean
     processedAt: String!
+}
+
+
+
+type Mutation {
+    signUp(input: AuthSignUpInput!): AuthSignUpPayload
+    signIn(input: AuthSignInInput!): AuthSignUpPayload
+}
+
+type Query {
+    greeting: String
 }
