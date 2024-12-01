@@ -86,7 +86,7 @@ open class Users(
     /**
      * The column <code>public.users.email</code>.
      */
-    val EMAIL: TableField<UsersRecord, String?> = createField(DSL.name("email"), SQLDataType.VARCHAR(255).nullable(false), this, "")
+    val EMAIL: TableField<UsersRecord, String?> = createField(DSL.name("email"), SQLDataType.VARCHAR(255), this, "")
 
     /**
      * The column <code>public.users.password_hash</code>.
