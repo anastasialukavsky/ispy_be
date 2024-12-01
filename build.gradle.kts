@@ -34,28 +34,42 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-jooq")
-	implementation("org.springframework.boot:spring-boot-starter-oauth2-authorization-server")
-	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
-	implementation("org.springframework.boot:spring-boot-starter-security")
+	// If you previously had Spring Security, you can decide whether to include it
+	// implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jooq:jooq:3.19.13")
 	implementation("org.jooq:jooq-meta:3.19.13")
 	implementation("org.jooq:jooq-codegen:3.19.13")
+	implementation("io.jsonwebtoken:jjwt-api:0.11.2")
+	implementation("com.graphql-java:graphql-java-extended-scalars:22.0")
+	implementation ("org.springframework.security:spring-security-crypto:6.1.4")
+	implementation("com.google.api-client:google-api-client:1.33.0")
+	implementation("com.google.http-client:google-http-client-jackson2:1.41.5")
+	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
+	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	implementation("com.graphql-java:graphql-java-extended-scalars:21.0")
-	implementation("com.graphql-java-kickstart:graphql-java-tools:13.1.1") {
-		exclude(group = "com.graphql-java", module = "graphql-java-extended-scalars")
-	}
-	implementation("com.graphql-java:graphql-java-extended-scalars:21.0") {
-	}
 	runtimeOnly("org.postgresql:postgresql")
+
+	// Remove GraphQL Java Kickstart dependencies
+	// implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:11.1.0")
+	// implementation("com.graphql-java-kickstart:graphiql-spring-boot-starter:11.1.0")
+	// implementation("com.graphql-java-kickstart:graphql-java-tools:13.1.1")
+	// implementation("com.graphql-java:graphql-java-extended-scalars:21.0")
+
+	// Add Spring Boot's built-in GraphQL starter
+	implementation("org.springframework.boot:spring-boot-starter-graphql")
+
+	// For GraphiQL UI
+	implementation("org.springframework.graphql:spring-graphql-test")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
-	testImplementation("org.springframework.security:spring-security-test")
+	// testImplementation("org.springframework.security:spring-security-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
+
 
 kotlin {
 	compilerOptions {
