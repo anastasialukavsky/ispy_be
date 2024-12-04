@@ -1,6 +1,7 @@
 scalar UUID
 scalar DateTime
 scalar OffsetDateTime
+scalar JSON
 
 type User {
     userId: UUID!
@@ -33,6 +34,11 @@ input AuthSignInInput {
     oAuthId: String
 }
 
+input ImageInput {
+    userId: UUID!
+    filePath: String!
+}
+
 type AuthSignUpPayload {
     user: User
     accessToken: String
@@ -50,7 +56,12 @@ type ElaResults {
     imageId: ID!
     tamperingLikelihood: Float
     detectedEla: Boolean
-    processedAt: DateTime
+}
+
+input ElaInput {
+    imageId: ID!
+    tamperingLikelihood: Float
+    detectedEla: Boolean
 }
 
 type NoiseAnalysisResults {
@@ -58,14 +69,67 @@ type NoiseAnalysisResults {
     imageId: ID!
     tamperingLikelihood: Float
     detectedNoise: Boolean
-    processedAt: String!
+}
+input NoiseAnalysisInput {
+    imageId: ID!
+    tamperingLikelihood: Float!
+    detectedNoise: Boolean!
 }
 
+type Metadata {
+    metadataId: ID!
+    imageId: ID!
+    metadata: JSON!
+}
+input MetadataInput {
+    imageId: ID!
+    metadata: JSON!
+}
 
+type HistoricalWeather {
+    id: ID!
+    imageId: ID!
+    historicalWeather: String
+}
 
+input HistoricalWeatherInput {
+    imageId: ID!
+    historicalWeather: String
+}
+
+type DeepLearningWeather {
+    id: ID!
+    imageId: ID!
+    deepLearningWeather: String
+}
+
+input DeepLearningWeatherInput {
+    imageId: ID!
+    deepLearningWeather: String
+}
+
+type Geolocation {
+    id: ID
+    imageId: ID
+    latitude: Float
+    longitude: Float
+}
+
+input GeolocationInput {
+    imageId: ID
+    latitude: Float
+    longitude: Float
+}
 type Mutation {
     signUp(input: AuthSignUpInput!): AuthSignUpPayload
     signIn(input: AuthSignInInput!): AuthSignUpPayload
+    saveImage(input: ImageInput!): Image!
+    saveMetadata(input: MetadataInput!): Metadata!
+    saveNoiseAnalysis(input: NoiseAnalysisInput!): NoiseAnalysisResults
+    saveEla(input: ElaInput!): ElaResults!
+    saveHistoricalWeather(input: HistoricalWeatherInput): HistoricalWeather
+    saveDeepLearningWeather(input: DeepLearningWeatherInput): DeepLearningWeather
+    saveGeolocation(input: GeolocationInput): Geolocation
 }
 
 type Query {
