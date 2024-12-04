@@ -5,11 +5,19 @@ package com.ispy.spy.jooq.tables
 
 
 import com.ispy.spy.jooq.Public
+import com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY
 import com.ispy.spy.jooq.keys.ELA_RESULTS__FK_IMAGE
+import com.ispy.spy.jooq.keys.GEOLOCATION__GEOLOCATION_IMAGE_ID_FKEY
+import com.ispy.spy.jooq.keys.HISTORICAL_WEATHER__HISTORICAL_WEATHER_IMAGE_ID_FKEY
 import com.ispy.spy.jooq.keys.IMAGES_PKEY
 import com.ispy.spy.jooq.keys.IMAGES__FK_USER
+import com.ispy.spy.jooq.keys.METADATA__METADATA_IMAGE_ID_FKEY
 import com.ispy.spy.jooq.keys.NOISE_ANALYSIS_RESULTS__FK_IMAGE
+import com.ispy.spy.jooq.tables.DeepLearningWeatherAnalizer.DeepLearningWeatherAnalizerPath
 import com.ispy.spy.jooq.tables.ElaResults.ElaResultsPath
+import com.ispy.spy.jooq.tables.Geolocation.GeolocationPath
+import com.ispy.spy.jooq.tables.HistoricalWeather.HistoricalWeatherPath
+import com.ispy.spy.jooq.tables.Metadata.MetadataPath
 import com.ispy.spy.jooq.tables.NoiseAnalysisResults.NoiseAnalysisResultsPath
 import com.ispy.spy.jooq.tables.Users.UsersPath
 import com.ispy.spy.jooq.tables.records.ImagesRecord
@@ -152,6 +160,22 @@ open class Images(
     val users: UsersPath
         get(): UsersPath = users()
 
+    private lateinit var _deepLearningWeatherAnalizer: DeepLearningWeatherAnalizerPath
+
+    /**
+     * Get the implicit to-many join path to the
+     * <code>public.deep_learning_weather_analizer</code> table
+     */
+    fun deepLearningWeatherAnalizer(): DeepLearningWeatherAnalizerPath {
+        if (!this::_deepLearningWeatherAnalizer.isInitialized)
+            _deepLearningWeatherAnalizer = DeepLearningWeatherAnalizerPath(this, null, DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY.inverseKey)
+
+        return _deepLearningWeatherAnalizer;
+    }
+
+    val deepLearningWeatherAnalizer: DeepLearningWeatherAnalizerPath
+        get(): DeepLearningWeatherAnalizerPath = deepLearningWeatherAnalizer()
+
     private lateinit var _elaResults: ElaResultsPath
 
     /**
@@ -183,6 +207,54 @@ open class Images(
 
     val noiseAnalysisResults: NoiseAnalysisResultsPath
         get(): NoiseAnalysisResultsPath = noiseAnalysisResults()
+
+    private lateinit var _geolocation: GeolocationPath
+
+    /**
+     * Get the implicit to-many join path to the <code>public.geolocation</code>
+     * table
+     */
+    fun geolocation(): GeolocationPath {
+        if (!this::_geolocation.isInitialized)
+            _geolocation = GeolocationPath(this, null, GEOLOCATION__GEOLOCATION_IMAGE_ID_FKEY.inverseKey)
+
+        return _geolocation;
+    }
+
+    val geolocation: GeolocationPath
+        get(): GeolocationPath = geolocation()
+
+    private lateinit var _historicalWeather: HistoricalWeatherPath
+
+    /**
+     * Get the implicit to-many join path to the
+     * <code>public.historical_weather</code> table
+     */
+    fun historicalWeather(): HistoricalWeatherPath {
+        if (!this::_historicalWeather.isInitialized)
+            _historicalWeather = HistoricalWeatherPath(this, null, HISTORICAL_WEATHER__HISTORICAL_WEATHER_IMAGE_ID_FKEY.inverseKey)
+
+        return _historicalWeather;
+    }
+
+    val historicalWeather: HistoricalWeatherPath
+        get(): HistoricalWeatherPath = historicalWeather()
+
+    private lateinit var _metadata: MetadataPath
+
+    /**
+     * Get the implicit to-many join path to the <code>public.metadata</code>
+     * table
+     */
+    fun metadata(): MetadataPath {
+        if (!this::_metadata.isInitialized)
+            _metadata = MetadataPath(this, null, METADATA__METADATA_IMAGE_ID_FKEY.inverseKey)
+
+        return _metadata;
+    }
+
+    val metadata: MetadataPath
+        get(): MetadataPath = metadata()
     override fun `as`(alias: String): Images = Images(DSL.name(alias), this)
     override fun `as`(alias: Name): Images = Images(alias, this)
     override fun `as`(alias: Table<*>): Images = Images(alias.qualifiedName, this)

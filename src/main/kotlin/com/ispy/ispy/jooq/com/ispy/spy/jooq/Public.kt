@@ -4,8 +4,12 @@
 package com.ispy.spy.jooq
 
 
+import com.ispy.spy.jooq.tables.DeepLearningWeatherAnalizer
 import com.ispy.spy.jooq.tables.ElaResults
+import com.ispy.spy.jooq.tables.Geolocation
+import com.ispy.spy.jooq.tables.HistoricalWeather
 import com.ispy.spy.jooq.tables.Images
+import com.ispy.spy.jooq.tables.Metadata
 import com.ispy.spy.jooq.tables.NoiseAnalysisResults
 import com.ispy.spy.jooq.tables.Users
 
@@ -30,14 +34,34 @@ open class Public : SchemaImpl("public", DefaultCatalog.DEFAULT_CATALOG) {
     }
 
     /**
+     * The table <code>public.deep_learning_weather_analizer</code>.
+     */
+    val DEEP_LEARNING_WEATHER_ANALIZER: DeepLearningWeatherAnalizer get() = DeepLearningWeatherAnalizer.DEEP_LEARNING_WEATHER_ANALIZER
+
+    /**
      * The table <code>public.ela_results</code>.
      */
     val ELA_RESULTS: ElaResults get() = ElaResults.ELA_RESULTS
 
     /**
+     * The table <code>public.geolocation</code>.
+     */
+    val GEOLOCATION: Geolocation get() = Geolocation.GEOLOCATION
+
+    /**
+     * The table <code>public.historical_weather</code>.
+     */
+    val HISTORICAL_WEATHER: HistoricalWeather get() = HistoricalWeather.HISTORICAL_WEATHER
+
+    /**
      * The table <code>public.images</code>.
      */
     val IMAGES: Images get() = Images.IMAGES
+
+    /**
+     * The table <code>public.metadata</code>.
+     */
+    val METADATA: Metadata get() = Metadata.METADATA
 
     /**
      * The table <code>public.noise_analysis_results</code>.
@@ -52,8 +76,12 @@ open class Public : SchemaImpl("public", DefaultCatalog.DEFAULT_CATALOG) {
     override fun getCatalog(): Catalog = DefaultCatalog.DEFAULT_CATALOG
 
     override fun getTables(): List<Table<*>> = listOf(
+        DeepLearningWeatherAnalizer.DEEP_LEARNING_WEATHER_ANALIZER,
         ElaResults.ELA_RESULTS,
+        Geolocation.GEOLOCATION,
+        HistoricalWeather.HISTORICAL_WEATHER,
         Images.IMAGES,
+        Metadata.METADATA,
         NoiseAnalysisResults.NOISE_ANALYSIS_RESULTS,
         Users.USERS
     )

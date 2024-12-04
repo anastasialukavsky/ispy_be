@@ -101,7 +101,7 @@ open class Users(
     /**
      * The column <code>public.users.oauth_id</code>.
      */
-    val OAUTH_ID: TableField<UsersRecord, String?> = createField(DSL.name("oauth_id"), SQLDataType.VARCHAR(255), this, "")
+    val OAUTH_ID: TableField<UsersRecord, String?> = createField(DSL.name("oauth_id"), SQLDataType.VARCHAR(1024), this, "")
 
     /**
      * The column <code>public.users.role</code>.

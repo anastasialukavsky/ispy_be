@@ -4,12 +4,21 @@
 package com.ispy.spy.jooq.tables.references
 
 
+import com.ispy.spy.jooq.tables.DeepLearningWeatherAnalizer
 import com.ispy.spy.jooq.tables.ElaResults
+import com.ispy.spy.jooq.tables.Geolocation
+import com.ispy.spy.jooq.tables.HistoricalWeather
 import com.ispy.spy.jooq.tables.Images
+import com.ispy.spy.jooq.tables.Metadata
 import com.ispy.spy.jooq.tables.NoiseAnalysisResults
 import com.ispy.spy.jooq.tables.Users
 
 
+
+/**
+ * The table <code>public.deep_learning_weather_analizer</code>.
+ */
+val DEEP_LEARNING_WEATHER_ANALIZER: DeepLearningWeatherAnalizer = DeepLearningWeatherAnalizer.DEEP_LEARNING_WEATHER_ANALIZER
 
 /**
  * The table <code>public.ela_results</code>.
@@ -17,9 +26,24 @@ import com.ispy.spy.jooq.tables.Users
 val ELA_RESULTS: ElaResults = ElaResults.ELA_RESULTS
 
 /**
+ * The table <code>public.geolocation</code>.
+ */
+val GEOLOCATION: Geolocation = Geolocation.GEOLOCATION
+
+/**
+ * The table <code>public.historical_weather</code>.
+ */
+val HISTORICAL_WEATHER: HistoricalWeather = HistoricalWeather.HISTORICAL_WEATHER
+
+/**
  * The table <code>public.images</code>.
  */
 val IMAGES: Images = Images.IMAGES
+
+/**
+ * The table <code>public.metadata</code>.
+ */
+val METADATA: Metadata = Metadata.METADATA
 
 /**
  * The table <code>public.noise_analysis_results</code>.

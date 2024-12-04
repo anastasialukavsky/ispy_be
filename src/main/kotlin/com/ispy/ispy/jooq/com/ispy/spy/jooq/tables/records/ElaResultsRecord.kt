@@ -6,8 +6,6 @@ package com.ispy.spy.jooq.tables.records
 
 import com.ispy.spy.jooq.tables.ElaResults
 
-import java.time.LocalDateTime
-
 import org.jooq.Record1
 import org.jooq.impl.UpdatableRecordImpl
 
@@ -34,10 +32,6 @@ open class ElaResultsRecord() : UpdatableRecordImpl<ElaResultsRecord>(ElaResults
         set(value): Unit = set(3, value)
         get(): Boolean? = get(3) as Boolean?
 
-    open var processedAt: LocalDateTime?
-        set(value): Unit = set(4, value)
-        get(): LocalDateTime? = get(4) as LocalDateTime?
-
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -47,12 +41,11 @@ open class ElaResultsRecord() : UpdatableRecordImpl<ElaResultsRecord>(ElaResults
     /**
      * Create a detached, initialised ElaResultsRecord
      */
-    constructor(id: Int? = null, imageId: Int? = null, tamperingLikelihood: Double? = null, detectedEla: Boolean? = null, processedAt: LocalDateTime? = null): this() {
+    constructor(id: Int? = null, imageId: Int? = null, tamperingLikelihood: Double? = null, detectedEla: Boolean? = null): this() {
         this.id = id
         this.imageId = imageId
         this.tamperingLikelihood = tamperingLikelihood
         this.detectedEla = detectedEla
-        this.processedAt = processedAt
         resetChangedOnNotNull()
     }
 }

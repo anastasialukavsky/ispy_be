@@ -10,8 +10,6 @@ import com.ispy.spy.jooq.keys.ELA_RESULTS__FK_IMAGE
 import com.ispy.spy.jooq.tables.Images.ImagesPath
 import com.ispy.spy.jooq.tables.records.ElaResultsRecord
 
-import java.time.LocalDateTime
-
 import kotlin.collections.Collection
 import kotlin.collections.List
 
@@ -95,11 +93,6 @@ open class ElaResults(
      * The column <code>public.ela_results.detected_ela</code>.
      */
     val DETECTED_ELA: TableField<ElaResultsRecord, Boolean?> = createField(DSL.name("detected_ela"), SQLDataType.BOOLEAN, this, "")
-
-    /**
-     * The column <code>public.ela_results.processed_at</code>.
-     */
-    val PROCESSED_AT: TableField<ElaResultsRecord, LocalDateTime?> = createField(DSL.name("processed_at"), SQLDataType.LOCALDATETIME(6).defaultValue(DSL.field(DSL.raw("now()"), SQLDataType.LOCALDATETIME)), this, "")
 
     private constructor(alias: Name, aliased: Table<ElaResultsRecord>?): this(alias, null, null, null, aliased, null, null)
     private constructor(alias: Name, aliased: Table<ElaResultsRecord>?, parameters: Array<Field<*>?>?): this(alias, null, null, null, aliased, parameters, null)

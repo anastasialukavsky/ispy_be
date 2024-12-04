@@ -10,8 +10,6 @@ import com.ispy.spy.jooq.keys.NOISE_ANALYSIS_RESULTS__FK_IMAGE
 import com.ispy.spy.jooq.tables.Images.ImagesPath
 import com.ispy.spy.jooq.tables.records.NoiseAnalysisResultsRecord
 
-import java.time.LocalDateTime
-
 import kotlin.collections.Collection
 import kotlin.collections.List
 
@@ -96,11 +94,6 @@ open class NoiseAnalysisResults(
      * The column <code>public.noise_analysis_results.detected_noise</code>.
      */
     val DETECTED_NOISE: TableField<NoiseAnalysisResultsRecord, Boolean?> = createField(DSL.name("detected_noise"), SQLDataType.BOOLEAN, this, "")
-
-    /**
-     * The column <code>public.noise_analysis_results.processed_at</code>.
-     */
-    val PROCESSED_AT: TableField<NoiseAnalysisResultsRecord, LocalDateTime?> = createField(DSL.name("processed_at"), SQLDataType.LOCALDATETIME(6).nullable(false).defaultValue(DSL.field(DSL.raw("now()"), SQLDataType.LOCALDATETIME)), this, "")
 
     private constructor(alias: Name, aliased: Table<NoiseAnalysisResultsRecord>?): this(alias, null, null, null, aliased, null, null)
     private constructor(alias: Name, aliased: Table<NoiseAnalysisResultsRecord>?, parameters: Array<Field<*>?>?): this(alias, null, null, null, aliased, parameters, null)
