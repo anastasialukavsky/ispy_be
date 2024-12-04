@@ -49,6 +49,7 @@ dependencies {
 	implementation("com.google.api-client:google-api-client:1.33.0")
 	implementation("com.google.http-client:google-http-client-jackson2:1.41.5")
 	implementation("software.amazon.awssdk:s3:2.25.67")
+	implementation ("io.github.cdimascio:java-dotenv:5.2.2")
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
