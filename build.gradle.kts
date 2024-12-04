@@ -35,7 +35,6 @@ repositories {
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-jooq")
-	// If you previously had Spring Security, you can decide whether to include it
 	// implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -54,14 +53,6 @@ dependencies {
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	runtimeOnly("org.postgresql:postgresql")
-
-	// Remove GraphQL Java Kickstart dependencies
-	// implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:11.1.0")
-	// implementation("com.graphql-java-kickstart:graphiql-spring-boot-starter:11.1.0")
-	// implementation("com.graphql-java-kickstart:graphql-java-tools:13.1.1")
-	// implementation("com.graphql-java:graphql-java-extended-scalars:21.0")
-
-	// Add Spring Boot's built-in GraphQL starter
 	implementation("org.springframework.boot:spring-boot-starter-graphql")
 
 	// For GraphiQL UI
