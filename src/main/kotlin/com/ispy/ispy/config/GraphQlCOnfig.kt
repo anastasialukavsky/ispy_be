@@ -13,6 +13,6 @@ class GraphQLConfig : RuntimeWiringConfigurer {
             .scalar(OffsetDateTimeScalar)
             .scalar(ExtendedScalars.UUID)
             .scalar(ExtendedScalars.DateTime)
-
+            .scalar(ExtendedScalars.Json)
     }
 }
