@@ -65,7 +65,6 @@ class S3Service {
         }
 
         val objectKey = "uploads/$cleanedFileName"
-
         println("Object Key after cleanup: $objectKey")
 
         val presigner = S3Presigner.builder()
