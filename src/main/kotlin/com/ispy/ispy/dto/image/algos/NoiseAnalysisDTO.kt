@@ -2,9 +2,9 @@ package com.ispy.ispy.dto.image.algos
 
 data class NoiseAnalysisDTO(
     val id: Int? = null,
-    val imageId: Int,
-    val tamperingLikelihood: Double,
-    val detectedNoise: Boolean,
+    val imageId: Int?,
+    val tamperingLikelihood: Double?,
+    val detectedNoise: Boolean?,
 )
 
 data class NoiseAnalysisInput(

@@ -5,8 +5,8 @@ import org.jooq.JSON
 
 data class MetadataDTO(
     val metadataId: Int? = null,
-    val imageId: Int,
-    val metadata: JsonNode,
+    val imageId: Int?,
+    val metadata: JsonNode?,
 )
 
 data class MetadataInput(
