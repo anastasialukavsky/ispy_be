@@ -70,6 +70,7 @@ type NoiseAnalysisResults {
     tamperingLikelihood: Float
     detectedNoise: Boolean
 }
+
 input NoiseAnalysisInput {
     imageId: ID!
     tamperingLikelihood: Float!
@@ -79,11 +80,11 @@ input NoiseAnalysisInput {
 type Metadata {
     metadataId: ID!
     imageId: ID!
-    metadata: JSON!
+    metadata: JSON
 }
 input MetadataInput {
     imageId: ID!
-    metadata: JSON!
+    metadata: JSON
 }
 
 type HistoricalWeather {
@@ -120,13 +121,24 @@ input GeolocationInput {
     latitude: Float
     longitude: Float
 }
+
+type ImageWithResults {
+    image: Image
+    elaResults: [ElaResults]
+    noiseAnalysisResults: [NoiseAnalysisResults]
+    metadata: [Metadata]
+    historicalWeather: [HistoricalWeather]
+    deepLearningWeather: [DeepLearningWeather]
+    geolocation: [Geolocation]
+}
+
 type Mutation {
     signUp(input: AuthSignUpInput!): AuthSignUpPayload
     signIn(input: AuthSignInInput!): AuthSignUpPayload
     saveImage(input: ImageInput!): Image!
     saveMetadata(input: MetadataInput!): Metadata!
     saveNoiseAnalysis(input: NoiseAnalysisInput!): NoiseAnalysisResults
-    saveEla(input: ElaInput!): ElaResults!
+    saveEla(input: ElaInput): ElaResults
     saveHistoricalWeather(input: HistoricalWeatherInput): HistoricalWeather
     saveDeepLearningWeather(input: DeepLearningWeatherInput): DeepLearningWeather
     saveGeolocation(input: GeolocationInput): Geolocation
@@ -134,4 +146,5 @@ type Mutation {
 
 type Query {
     greeting: String
+    getUserImagesWithResults(userId: UUID!): [ImageWithResults]
 }
