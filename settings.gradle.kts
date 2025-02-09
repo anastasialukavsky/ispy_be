@@ -3,3 +3,11 @@ plugins {
 }
 rootProject.name = "ispy"
 include("lib")
+
+// Enable Gradle Build Cache
+buildCache {
+    local {
+        isEnabled = true
+        directory = File(rootDir, "build-cache")
+    }
+}
