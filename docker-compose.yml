@@ -1,7 +1,7 @@
 services:
   backend:
     build:
-      context: /Users/anastasialukavsky/Downloads/ispy
+      context: .
       dockerfile: Dockerfile
     container_name: backend-service
     ports:
@@ -9,14 +9,14 @@ services:
     networks:
       - app-network
     environment:
-       - SPRING_DATASOURCE_URL
-       - SPRING_DATASOURCE_USERNAME
-       - SPRING_DATASOURCE_PASSWORD
-       - SPRING_JPA_HIBERNATE_DDL_AUTO
-       - AWS_REGION
-       - AWS_ACCESS_KEY_ID
-       - AWS_SECRET_ACCESS_KEY
-       - S3_BUCKET_NAME
+      - SPRING_DATASOURCE_URL
+      - SPRING_DATASOURCE_USERNAME
+      - SPRING_DATASOURCE_PASSWORD
+      - SPRING_JPA_HIBERNATE_DDL_AUTO
+      - AWS_REGION
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - S3_BUCKET_NAME
 
   postgres:
     image: postgres:15
@@ -32,18 +32,6 @@ services:
       - "5432:5432"
     networks:
       - app-network
-
-  frontend:
-    build:
-      context: /Users/anastasialukavsky/FULLSTACK/img_detective/img-detective
-      dockerfile: Dockerfile
-    container_name: frontend-service
-    ports:
-      - "3000:80"
-    networks:
-      - app-network
-    environment:
-      - REACT_APP_API_URL=http://backend:8080/graphql
 
 networks:
   app-network:
