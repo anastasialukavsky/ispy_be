@@ -1,4 +1,3 @@
-# Stage I: Build the application
 FROM openjdk:17-jdk-slim AS builder
 
 WORKDIR /app
@@ -11,10 +10,15 @@ RUN chmod +x gradlew
 # Copy the entire source code
 COPY . .
 
-# Build the application inside Docker
+# Ensure database is up before running jOOQ
+RUN echo "Waiting for PostgreSQL to be ready..." && \
+    while ! pg_isready -h postgres-db -p 5432 -U $POSTGRES_USER; do sleep 2; done
+
+# Run jOOQ Code Generation
+RUN ./gradlew generateJooq
+
 RUN ./gradlew build --no-daemon -x test
 
-# Stage II: Run the application
 FROM openjdk:17-jdk-slim
 
 WORKDIR /app

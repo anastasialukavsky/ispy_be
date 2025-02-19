@@ -91,7 +91,7 @@ tasks.register<JavaExec>("generateJooq") {
 tasks.register("jooqGenerate") {
 	doLast {
 		println("Generating jOOQ code...")
-		val jdbcUrl = "jdbc:postgresql://localhost:5432/ispy_db"
+		val jdbcUrl = "jdbc:postgresql://postgres:5432/ispy_db"
 		val username = "anastasialukavsky"
 		val password = "postrespass"
 		val packageName = "com.isy.jooq"
