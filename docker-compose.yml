@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:15
@@ -42,3 +40,7 @@ services:
       - AWS_ACCESS_KEY_ID=your-access-key
       - AWS_SECRET_ACCESS_KEY=your-secret-key
       - S3_BUCKET_NAME=spi-imageupload-1a1b2c3
+
+networks:
+  app-network:
+    driver: bridge
