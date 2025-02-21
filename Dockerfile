@@ -10,9 +10,9 @@ RUN chmod +x gradlew
 # Copy the entire source code
 COPY . .
 
-# Ensure database is up before running jOOQ
+# Ensure postgres is up before running jOOQ
 RUN echo "Waiting for PostgreSQL to be ready..." && \
-    while ! pg_isready -h postgres-db -p 5432 -U $POSTGRES_USER; do sleep 2; done
+    until echo > /dev/tcp/postgres-db/5432; do sleep 2; done
 
 # Run jOOQ Code Generation
 RUN ./gradlew generateJooq

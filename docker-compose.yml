@@ -8,13 +8,18 @@ services:
     env_file:
       - .env
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
+      - POSTGRES_USER=anastasialukavsky
+      - POSTGRES_PASSWORD=postgrespass
+      - POSTGRES_DB=ispy_db
     ports:
       - "5432:5432"
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U anastasialukavsky -d ispy_db"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
 
   backend:
     build:
@@ -26,17 +31,14 @@ services:
     networks:
       - app-network
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     environment:
-      - SPRING_DATASOURCE_URL
-      - SPRING_DATASOURCE_USERNAME
-      - SPRING_DATASOURCE_PASSWORD
-      - SPRING_JPA_HIBERNATE_DDL_AUTO
-      - AWS_REGION
-      - AWS_ACCESS_KEY_ID
-      - AWS_SECRET_ACCESS_KEY
-      - S3_BUCKET_NAME
-
-networks:
-  app-network:
-    driver: bridge
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/ispy_db
+      - SPRING_DATASOURCE_USERNAME=anastasialukavsky
+      - SPRING_DATASOURCE_PASSWORD=postgrespass
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - AWS_REGION=us-east-2
+      - AWS_ACCESS_KEY_ID=your-access-key
+      - AWS_SECRET_ACCESS_KEY=your-secret-key
+      - S3_BUCKET_NAME=spi-imageupload-1a1b2c3
