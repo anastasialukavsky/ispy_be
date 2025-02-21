@@ -3,7 +3,7 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>org.postgresql.Driver</driver>
-        <url>jdbc:postgresql://postgres:5432/ispy_db</url>
+        <url>jdbc:postgresql://ispy-db.c10m0gowa0gw.us-east-1.rds.amazonaws.com:5432/ispy_db</url>
         <user>anastasialukavsky</user>
         <password>postgrespass</password>
     </jdbc>

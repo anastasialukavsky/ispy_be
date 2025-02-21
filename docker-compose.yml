@@ -1,51 +1,17 @@
 services:
-  postgres:
-    image: postgres:15
-    container_name: postgres-db
-    restart: always
-    env_file:
-      - .env
-    environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
-    ports:
-      - "5432:5432"
-    networks:
-      - app-network
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
-      interval: 5s
-      retries: 5
-      start_period: 10s
-
-  jooq-codegen:
-    build:
-      context: .
-      dockerfile: Dockerfile.codegen
-    networks:
-      - app-network
-    depends_on:
-      postgres:
-        condition: service_healthy
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ispy_db
-      - SPRING_DATASOURCE_USERNAME=$POSTGRES_USER
-      - SPRING_DATASOURCE_PASSWORD=$POSTGRES_PASSWORD
-    command: ["./wait-for-it.sh", "postgres:5432", "--", "./gradlew", "generateJooq"]
-
   backend:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+        SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+        SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     container_name: backend-service
     ports:
       - "8080:8080"
     networks:
       - app-network
-    depends_on:
-      jooq-codegen:
-        condition: service_completed_successfully
     env_file:
       - .env
 
