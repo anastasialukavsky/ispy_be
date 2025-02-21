@@ -32,7 +32,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ispy_db
       - SPRING_DATASOURCE_USERNAME=$POSTGRES_USER
       - SPRING_DATASOURCE_PASSWORD=$POSTGRES_PASSWORD
-    command: ["./gradlew", "generateJooq"]
+    command: ["./wait-for-it.sh", "postgres:5432", "--", "./gradlew", "generateJooq"]
 
   backend:
     build:
