@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   postgres:
     image: postgres:15
@@ -24,7 +22,7 @@ services:
   jooq-codegen:
     build:
       context: .
-      dockerfile: Dockerfile.codegen  # Separate Dockerfile for jOOQ codegen
+      dockerfile: Dockerfile.codegen
     networks:
       - app-network
     depends_on:
