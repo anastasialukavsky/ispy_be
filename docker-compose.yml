@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   postgres:
     image: postgres:15
@@ -19,6 +21,21 @@ services:
       retries: 5
       start_period: 10s
 
+  jooq-codegen:
+    build:
+      context: .
+      dockerfile: Dockerfile.codegen  # Separate Dockerfile for jOOQ codegen
+    networks:
+      - app-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/ispy_db
+      - SPRING_DATASOURCE_USERNAME=$POSTGRES_USER
+      - SPRING_DATASOURCE_PASSWORD=$POSTGRES_PASSWORD
+    command: ["./gradlew", "generateJooq"]
+
   backend:
     build:
       context: .
@@ -29,8 +46,8 @@ services:
     networks:
       - app-network
     depends_on:
-      postgres:
-        condition: service_healthy
+      jooq-codegen:
+        condition: service_completed_successfully
     env_file:
       - .env
 
