@@ -43,6 +43,7 @@ dependencies {
 	implementation("org.jooq:jooq-meta:3.19.13")
 	implementation("org.jooq:jooq-codegen:3.19.13")
 	implementation("io.jsonwebtoken:jjwt-api:0.11.2")
+	jooqCodegen("org.postgresql:postgresql:42.5.4")
 	implementation("com.graphql-java:graphql-java-extended-scalars:22.0")
 	implementation ("org.springframework.security:spring-security-crypto:6.1.4")
 	implementation("com.google.api-client:google-api-client:1.33.0")
@@ -82,12 +83,18 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+tasks.register<JavaExec>("jooqGenerate") {
+	group = "jooq"
+	description = "Generates jOOQ classes from the database schema."
 
-sourceSets {
-	main {
-		kotlin {
-			srcDir("build/generated-sources/jooq")
-		}
+	classpath = configurations["jooqCodegen"] + sourceSets["main"].runtimeClasspath
+
+	mainClass.set("org.jooq.codegen.GenerationTool")
+
+	args = listOf(file("src/main/resources/jooq-config.xml").absolutePath)
+
+	doFirst {
+		println("🔹 Running jOOQ Code Generation...")
 	}
 }
 
@@ -99,7 +106,7 @@ tasks.register("jooqGenerate") {
 		val username = "postgres"
 		val password = "postrespass"
 		val packageName = "com.isy.jooq"
-		val outputDirectory = "build/generated-sources/jooq"
+		val outputDirectory = "src/main/kotlin/com/ispy/jooq"
 
 
 		val jooqConfiguration = Configuration()
