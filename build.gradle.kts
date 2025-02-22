@@ -64,6 +64,13 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+sourceSets {
+	main {
+		kotlin {
+			srcDir("build/generated-sources/jooq")
+		}
+	}
+}
 
 kotlin {
 	compilerOptions {
@@ -75,19 +82,6 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-
-
-tasks.register<JavaExec>("generateJooq") {
-	group = "jooq"
-	description = "Generates jOOQ classes from the database schema."
-
-	mainClass.set("org.jooq.codegen.GenerationTool")
-	classpath = sourceSets["main"].runtimeClasspath
-	args = listOf(file("src/main/resources/jooq-config.xml").absolutePath)
-}
-
-
-
 tasks.register("jooqGenerate") {
 	doLast {
 		println("Generating jOOQ code...")
@@ -95,7 +89,7 @@ tasks.register("jooqGenerate") {
 		val username = "postgres"
 		val password = "postrespass"
 		val packageName = "com.isy.jooq"
-		val outputDirectory = "src/main/kotlin/com/ispy/jooq"
+		val outputDirectory = "build/generated-sources/jooq"
 
 
 		val jooqConfiguration = Configuration()
