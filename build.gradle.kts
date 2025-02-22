@@ -82,6 +82,16 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+
+sourceSets {
+	main {
+		kotlin {
+			srcDir("build/generated-sources/jooq")
+		}
+	}
+}
+
+
 tasks.register("jooqGenerate") {
 	doLast {
 		println("Generating jOOQ code...")
