@@ -51,7 +51,7 @@
             <packageName>com.ispy.ispy.jooq</packageName>
 
             <!-- The destination directory of your generated classes. -->
-            <directory>src/main/kotlin/com/ispy/ispy/jooq</directory>
+            <directory>${project.basedir}/src/main/kotlin/com/ispy/ispy/jooq</directory>
         </target>
     </generator>
 </configuration>
