@@ -96,7 +96,7 @@ tasks.register("jooqGenerate") {
 		println("Generating jOOQ code...")
 		val jdbcUrl = "jdbc:postgresql://ispy-db.c10m0gowa0gw.us-east-1.rds.amazonaws.com:5432/postgres"
 		val username = "postgres"
-		val password = "postrespass"
+		val password = "postgrespass"
 		val packageName = "com.ispy.ispy.jooq"
 		val outputDirectory = "src/main/kotlin/com/ispy/ispy/jooq"
 
