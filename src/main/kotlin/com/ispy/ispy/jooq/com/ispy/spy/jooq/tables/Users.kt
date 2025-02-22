@@ -4,11 +4,11 @@
 package com.ispy.spy.jooq.tables
 
 
-import com.ispy.spy.jooq.Public
-import com.ispy.spy.jooq.enums.UserRole
-import com.ispy.spy.jooq.keys.IMAGES__FK_USER
-import com.ispy.spy.jooq.keys.USERS_EMAIL_KEY
-import com.ispy.spy.jooq.keys.USERS_PKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.Public
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.enums.UserRole
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.IMAGES__FK_USER
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.USERS_EMAIL_KEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.USERS_PKEY
 import com.ispy.spy.jooq.tables.Images.ImagesPath
 import com.ispy.spy.jooq.tables.records.UsersRecord
 
@@ -106,7 +106,8 @@ open class Users(
     /**
      * The column <code>public.users.role</code>.
      */
-    val ROLE: TableField<UsersRecord, UserRole?> = createField(DSL.name("role"), SQLDataType.VARCHAR.defaultValue(DSL.field(DSL.raw("'USER'::user_role"), SQLDataType.VARCHAR)).asEnumDataType(UserRole::class.java), this, "")
+    val ROLE: TableField<UsersRecord, UserRole?> = createField(DSL.name("role"), SQLDataType.VARCHAR.defaultValue(DSL.field(DSL.raw("'USER'::user_role"), SQLDataType.VARCHAR)).asEnumDataType(
+        UserRole::class.java), this, "")
 
     /**
      * The column <code>public.users.created_at</code>.

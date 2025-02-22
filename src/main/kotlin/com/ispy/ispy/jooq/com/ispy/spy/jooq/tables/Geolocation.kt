@@ -4,10 +4,10 @@
 package com.ispy.spy.jooq.tables
 
 
-import com.ispy.spy.jooq.Public
-import com.ispy.spy.jooq.keys.GEOLOCATION_IMAGE_ID_KEY
-import com.ispy.spy.jooq.keys.GEOLOCATION_PKEY
-import com.ispy.spy.jooq.keys.GEOLOCATION__GEOLOCATION_IMAGE_ID_FKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.Public
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.GEOLOCATION_IMAGE_ID_KEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.GEOLOCATION_PKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.GEOLOCATION__GEOLOCATION_IMAGE_ID_FKEY
 import com.ispy.spy.jooq.tables.Images.ImagesPath
 import com.ispy.spy.jooq.tables.records.GeolocationRecord
 

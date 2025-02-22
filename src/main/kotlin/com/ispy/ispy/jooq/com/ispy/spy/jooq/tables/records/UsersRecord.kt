@@ -4,7 +4,7 @@
 package com.ispy.spy.jooq.tables.records
 
 
-import com.ispy.spy.jooq.enums.UserRole
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.enums.UserRole
 import com.ispy.spy.jooq.tables.Users
 
 import java.time.LocalDateTime
