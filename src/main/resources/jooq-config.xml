@@ -3,9 +3,9 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>org.postgresql.Driver</driver>
-        <url>jdbc:postgresql://ispy-db.c10m0gowa0gw.us-east-1.rds.amazonaws.com:5432/postgres</url>
-        <user>postgres</user>
-        <password>postgrespass</password>
+        <url>${SPRING_DATASOURCE_URL}</url>
+        <user>${SPRING_DATASOURCE_USERNAME}</user>
+        <password>${SPRING_DATASOURCE_PASSWORD}</password>
     </jdbc>
 
     <generator>
