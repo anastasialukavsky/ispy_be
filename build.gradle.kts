@@ -3,6 +3,7 @@ import org.jooq.codegen.GenerationTool
 import org.jooq.meta.jaxb.*
 import org.jooq.meta.jaxb.Configuration
 import org.jooq.meta.jaxb.Target
+import java.net.URLClassLoader
 
 plugins {
 	kotlin("jvm") version "1.9.20"
@@ -87,7 +88,7 @@ tasks.register<JavaExec>("generateJooq") {
 	group = "jooq"
 	description = "Generates jOOQ classes from the database schema."
 	mainClass.set("org.jooq.codegen.GenerationTool")
-	classpath = sourceSets["main"].runtimeClasspath
+	classpath = configurations["jooqCodegen"] + sourceSets["main"].runtimeClasspath
 	args = listOf(file("src/main/resources/jooq-config.xml").absolutePath)
 }
 tasks.register("jooqGenerate") {
@@ -98,7 +99,6 @@ tasks.register("jooqGenerate") {
 		val password = "postrespass"
 		val packageName = "com.isy.jooq"
 		val outputDirectory = "src/main/kotlin/com/ispy/jooq"
-
 
 		val jooqConfiguration = Configuration()
 			.withJdbc(
@@ -125,6 +125,11 @@ tasks.register("jooqGenerate") {
 							.withDirectory(outputDirectory)
 					)
 			)
+
+		val urls = configurations["jooqCodegen"].files.map { it.toURI().toURL() }.toTypedArray()
+		val classLoader = URLClassLoader(urls, Thread.currentThread().contextClassLoader)
+		Thread.currentThread().contextClassLoader = classLoader
+
 		GenerationTool.generate(jooqConfiguration)
 		println("jOOQ generation completed.")
 	}
