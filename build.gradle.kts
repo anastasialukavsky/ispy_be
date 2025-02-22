@@ -95,7 +95,8 @@ tasks.register("jooqGenerate") {
 		val username = "postgres"
 		val password = "postrespass"
 		val packageName = "com.isy.jooq"
-		val outputDirectory = "src/main/kotlin/com/ispy/jooq"
+		val outputDirectory = projectDir.resolve("src/main/kotlin/com/ispy/jooq").absolutePath
+
 
 
 		val jooqConfiguration = Configuration()
