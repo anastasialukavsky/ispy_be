@@ -83,22 +83,13 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.register<JavaExec>("jooqGenerate") {
+tasks.register<JavaExec>("generateJooq") {
 	group = "jooq"
 	description = "Generates jOOQ classes from the database schema."
-
-	classpath = configurations["jooqCodegen"] + sourceSets["main"].runtimeClasspath
-
 	mainClass.set("org.jooq.codegen.GenerationTool")
-
+	classpath = sourceSets["main"].runtimeClasspath
 	args = listOf(file("src/main/resources/jooq-config.xml").absolutePath)
-
-	doFirst {
-		println("🔹 Running jOOQ Code Generation...")
-	}
 }
-
-
 tasks.register("jooqGenerate") {
 	doLast {
 		println("Generating jOOQ code...")
@@ -127,17 +118,13 @@ tasks.register("jooqGenerate") {
 							.withInputSchema("public")
 							.withIncludes(".*")
 							.withExcludes("databasechangelog|databasechangeloglock")
-
 					)
 					.withTarget(
 						Target()
 							.withPackageName(packageName)
 							.withDirectory(outputDirectory)
 					)
-
 			)
-
-
 		GenerationTool.generate(jooqConfiguration)
 		println("jOOQ generation completed.")
 	}
