@@ -4,10 +4,10 @@
 package com.ispy.spy.jooq.tables
 
 
-import com.ispy.spy.jooq.Public
-import com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_KEY
-import com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER_PKEY
-import com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.Public
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_KEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER_PKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY
 import com.ispy.spy.jooq.tables.Images.ImagesPath
 import com.ispy.spy.jooq.tables.records.DeepLearningWeatherAnalizerRecord
 
@@ -129,8 +129,12 @@ open class DeepLearningWeatherAnalizer(
     override fun getSchema(): Schema? = if (aliased()) null else Public.PUBLIC
     override fun getIdentity(): Identity<DeepLearningWeatherAnalizerRecord, Int?> = super.getIdentity() as Identity<DeepLearningWeatherAnalizerRecord, Int?>
     override fun getPrimaryKey(): UniqueKey<DeepLearningWeatherAnalizerRecord> = DEEP_LEARNING_WEATHER_ANALIZER_PKEY
-    override fun getUniqueKeys(): List<UniqueKey<DeepLearningWeatherAnalizerRecord>> = listOf(DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_KEY)
-    override fun getReferences(): List<ForeignKey<DeepLearningWeatherAnalizerRecord, *>> = listOf(DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY)
+    override fun getUniqueKeys(): List<UniqueKey<DeepLearningWeatherAnalizerRecord>> = listOf(
+        DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_KEY
+    )
+    override fun getReferences(): List<ForeignKey<DeepLearningWeatherAnalizerRecord, *>> = listOf(
+        DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY
+    )
 
     private lateinit var _images: ImagesPath
 

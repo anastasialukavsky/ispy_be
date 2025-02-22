@@ -4,10 +4,10 @@
 package com.ispy.spy.jooq.tables
 
 
-import com.ispy.spy.jooq.Public
-import com.ispy.spy.jooq.keys.HISTORICAL_WEATHER_IMAGE_ID_KEY
-import com.ispy.spy.jooq.keys.HISTORICAL_WEATHER_PKEY
-import com.ispy.spy.jooq.keys.HISTORICAL_WEATHER__HISTORICAL_WEATHER_IMAGE_ID_FKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.Public
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.HISTORICAL_WEATHER_IMAGE_ID_KEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.HISTORICAL_WEATHER_PKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.HISTORICAL_WEATHER__HISTORICAL_WEATHER_IMAGE_ID_FKEY
 import com.ispy.spy.jooq.tables.Images.ImagesPath
 import com.ispy.spy.jooq.tables.records.HistoricalWeatherRecord
 
@@ -125,7 +125,9 @@ open class HistoricalWeather(
     override fun getIdentity(): Identity<HistoricalWeatherRecord, Int?> = super.getIdentity() as Identity<HistoricalWeatherRecord, Int?>
     override fun getPrimaryKey(): UniqueKey<HistoricalWeatherRecord> = HISTORICAL_WEATHER_PKEY
     override fun getUniqueKeys(): List<UniqueKey<HistoricalWeatherRecord>> = listOf(HISTORICAL_WEATHER_IMAGE_ID_KEY)
-    override fun getReferences(): List<ForeignKey<HistoricalWeatherRecord, *>> = listOf(HISTORICAL_WEATHER__HISTORICAL_WEATHER_IMAGE_ID_FKEY)
+    override fun getReferences(): List<ForeignKey<HistoricalWeatherRecord, *>> = listOf(
+        HISTORICAL_WEATHER__HISTORICAL_WEATHER_IMAGE_ID_FKEY
+    )
 
     private lateinit var _images: ImagesPath
 

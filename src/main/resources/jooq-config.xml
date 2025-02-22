@@ -48,7 +48,7 @@
 
         <target>
             <!-- The destination package of your generated classes (within the destination directory) -->
-            <packageName>com.ispy.spy.jooq</packageName>
+            <packageName>com.ispy.ispy.jooq</packageName>
 
             <!-- The destination directory of your generated classes. -->
             <directory>src/main/kotlin/com/ispy/ispy/jooq</directory>

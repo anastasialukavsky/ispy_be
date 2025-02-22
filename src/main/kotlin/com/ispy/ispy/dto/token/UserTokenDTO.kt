@@ -1,6 +1,6 @@
 package com.ispy.ispy.dto.token
 
-import com.ispy.spy.jooq.enums.UserRole
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.enums.UserRole
 import java.util.UUID
 
 class UserTokenDTO (
@@ -9,4 +9,4 @@ class UserTokenDTO (
     val passwordHash: String?,
     val role: UserRole,
 
-)
+    )

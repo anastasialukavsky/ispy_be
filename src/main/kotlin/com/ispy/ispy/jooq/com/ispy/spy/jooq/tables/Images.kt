@@ -4,15 +4,15 @@
 package com.ispy.spy.jooq.tables
 
 
-import com.ispy.spy.jooq.Public
-import com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY
-import com.ispy.spy.jooq.keys.ELA_RESULTS__FK_IMAGE
-import com.ispy.spy.jooq.keys.GEOLOCATION__GEOLOCATION_IMAGE_ID_FKEY
-import com.ispy.spy.jooq.keys.HISTORICAL_WEATHER__HISTORICAL_WEATHER_IMAGE_ID_FKEY
-import com.ispy.spy.jooq.keys.IMAGES_PKEY
-import com.ispy.spy.jooq.keys.IMAGES__FK_USER
-import com.ispy.spy.jooq.keys.METADATA__METADATA_IMAGE_ID_FKEY
-import com.ispy.spy.jooq.keys.NOISE_ANALYSIS_RESULTS__FK_IMAGE
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.Public
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.ELA_RESULTS__FK_IMAGE
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.GEOLOCATION__GEOLOCATION_IMAGE_ID_FKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.HISTORICAL_WEATHER__HISTORICAL_WEATHER_IMAGE_ID_FKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.IMAGES_PKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.IMAGES__FK_USER
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.METADATA__METADATA_IMAGE_ID_FKEY
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.NOISE_ANALYSIS_RESULTS__FK_IMAGE
 import com.ispy.spy.jooq.tables.DeepLearningWeatherAnalizer.DeepLearningWeatherAnalizerPath
 import com.ispy.spy.jooq.tables.ElaResults.ElaResultsPath
 import com.ispy.spy.jooq.tables.Geolocation.GeolocationPath
