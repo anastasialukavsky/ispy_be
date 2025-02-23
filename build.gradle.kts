@@ -69,7 +69,7 @@ dependencies {
 sourceSets {
 	main {
 		kotlin {
-			srcDir("src/main/kotlin")
+			srcDirs("src/main/kotlin", "src/main/kotlin/com/ispy/ispy/jooq")
 		}
 	}
 }

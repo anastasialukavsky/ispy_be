@@ -18,7 +18,7 @@ ENV SPRING_DATASOURCE_PASSWORD=$SPRING_DATASOURCE_PASSWORD
 
 RUN ./gradlew dependencies --no-daemon
 RUN ./gradlew clean jooqGenerate --no-daemon
-
+RUN ls -R src/main/kotlin/com/ispy/ispy/jooq
 RUN ./gradlew build --no-daemon -x test
 
 FROM openjdk:17-jdk-slim
