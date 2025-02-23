@@ -5,18 +5,14 @@ import com.ispy.ispy.dto.image.ImageDTO
 import com.ispy.ispy.dto.image.ImageWithResultsDTO
 import com.ispy.ispy.dto.image.MetadataDTO
 import com.ispy.ispy.dto.image.algos.*
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.records.*
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.references.*
 import com.ispy.ispy.utils.authUtils.AuthUtils
-import com.ispy.spy.jooq.tables.*
-import com.ispy.spy.jooq.tables.records.*
-import com.ispy.spy.jooq.tables.references.*
 import org.jooq.DSLContext
-import org.jooq.JSONB
-import org.jooq.impl.DSL
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 import java.util.*
-import kotlin.Metadata
 
 @Service
 class ImageService {

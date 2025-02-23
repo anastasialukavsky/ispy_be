@@ -5,13 +5,13 @@ package com.ispy.ispy.jooq.com.ispy.spy.jooq
 
 
 import com.ispy.spy.jooq.tables.DeepLearningWeatherAnalizer
-import com.ispy.spy.jooq.tables.ElaResults
-import com.ispy.spy.jooq.tables.Geolocation
-import com.ispy.spy.jooq.tables.HistoricalWeather
-import com.ispy.spy.jooq.tables.Images
-import com.ispy.spy.jooq.tables.Metadata
-import com.ispy.spy.jooq.tables.NoiseAnalysisResults
-import com.ispy.spy.jooq.tables.Users
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.ElaResults
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.Geolocation
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.HistoricalWeather
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.Images
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.Metadata
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.NoiseAnalysisResults
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.Users
 
 import kotlin.collections.List
 

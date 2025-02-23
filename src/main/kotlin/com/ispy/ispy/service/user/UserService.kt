@@ -1,8 +1,8 @@
 package com.ispy.ispy.service.user
 
 import com.ispy.ispy.dto.UserDTO
-import com.ispy.spy.jooq.tables.records.UsersRecord
-import com.ispy.spy.jooq.tables.references.USERS
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.records.UsersRecord
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.references.USERS
 import org.jooq.DSLContext
 import org.springframework.stereotype.Service
 import java.time.ZoneOffset
