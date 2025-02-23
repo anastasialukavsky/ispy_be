@@ -69,7 +69,7 @@ dependencies {
 sourceSets {
 	main {
 		kotlin {
-			srcDir("build/generated-sources/jooq")
+			srcDir("src/main/kotlin")
 		}
 	}
 }
