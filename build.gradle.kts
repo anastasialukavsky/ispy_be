@@ -78,6 +78,7 @@ tasks.withType<Test> {
 
 tasks.named("compileKotlin") {
 	dependsOn("jooqGenerate")
+	mustRunAfter("jooqGenerate")
 }
 
 sourceSets {
