@@ -2,7 +2,7 @@ package com.ispy.ispy.service.image.algos
 
 import com.ispy.ispy.dto.image.algos.GeolocationDTO
 import com.ispy.ispy.dto.image.algos.GeolocationInput
-import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.Geolocation.Companion.GEOLOCATION
+import com.ispy.ispy.jooq.tables.Geolocation.Companion.GEOLOCATION
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

@@ -2,7 +2,7 @@ package com.ispy.ispy.service.image.algos
 
 
 import com.ispy.ispy.dto.image.algos.NoiseAnalysisDTO
-import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.references.NOISE_ANALYSIS_RESULTS
+import com.ispy.ispy.jooq.tables.references.NOISE_ANALYSIS_RESULTS
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

@@ -1,7 +1,7 @@
 package com.ispy.ispy.utils.userUtils
 
 import com.ispy.ispy.dto.UserDTO
-import com.ispy.ispy.jooq.com.ispy.spy.jooq.enums.UserRole
+import com.ispy.ispy.jooq.enums.UserRole
 import java.util.*
 
 data class CustomUserDetails(
