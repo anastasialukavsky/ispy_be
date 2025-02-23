@@ -1,7 +1,7 @@
 package com.ispy.ispy.dto.image
 
 import com.ispy.ispy.dto.image.algos.*
-import com.ispy.spy.jooq.tables.*
+import com.ispy.ispy.jooq.tables.*
 
 
 import kotlin.Metadata

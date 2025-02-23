@@ -5,8 +5,8 @@ import com.ispy.ispy.dto.image.ImageDTO
 import com.ispy.ispy.dto.image.ImageWithResultsDTO
 import com.ispy.ispy.dto.image.MetadataDTO
 import com.ispy.ispy.dto.image.algos.*
-import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.records.*
-import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.references.*
+import com.ispy.ispy.jooq.tables.records.*
+import com.ispy.ispy.jooq.tables.references.*
 import com.ispy.ispy.utils.authUtils.AuthUtils
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired

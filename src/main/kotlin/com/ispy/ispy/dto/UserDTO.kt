@@ -1,6 +1,6 @@
 package com.ispy.ispy.dto
 
-import com.ispy.ispy.jooq.com.ispy.spy.jooq.enums.UserRole
+import com.ispy.ispy.jooq.enums.UserRole
 import java.time.OffsetDateTime
 import java.util.UUID
 

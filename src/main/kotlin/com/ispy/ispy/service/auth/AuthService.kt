@@ -6,7 +6,7 @@ import com.ispy.ispy.dto.auth.AuthSignUpPayloadDTO
 import com.ispy.ispy.utils.authUtils.AuthUtils
 import com.ispy.ispy.utils.jwtUtils.JwtUtils
 import com.ispy.ispy.utils.userUtils.CustomUserDetails
-import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.references.USERS
+import com.ispy.ispy.jooq.tables.references.USERS
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
