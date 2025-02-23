@@ -3,10 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      args:
-        SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
-        SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
-        SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     container_name: backend-service
     ports:
       - "8080:8080"
@@ -14,6 +10,10 @@ services:
       - app-network
     env_file:
       - .env
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://ispy-db.c10m0gowa0gw.us-east-1.rds.amazonaws.com:5432/postgres"
+      SPRING_DATASOURCE_USERNAME: "${SPRING_DATASOURCE_USERNAME}"
+      SPRING_DATASOURCE_PASSWORD: "${SPRING_DATASOURCE_PASSWORD}"
 
 networks:
   app-network:
