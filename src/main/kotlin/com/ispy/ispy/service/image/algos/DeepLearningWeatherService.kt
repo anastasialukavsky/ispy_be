@@ -2,7 +2,7 @@ package com.ispy.ispy.service.image.algos
 
 import com.ispy.ispy.dto.image.algos.DeepLearningWeatherDTO
 import com.ispy.ispy.dto.image.algos.DeepLearningWeatherInput
-import com.ispy.spy.jooq.tables.references.DEEP_LEARNING_WEATHER_ANALIZER
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.references.DEEP_LEARNING_WEATHER_ANALIZER
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

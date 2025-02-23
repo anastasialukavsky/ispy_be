@@ -8,8 +8,8 @@ import com.ispy.ispy.jooq.com.ispy.spy.jooq.Public
 import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_KEY
 import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER_PKEY
 import com.ispy.ispy.jooq.com.ispy.spy.jooq.keys.DEEP_LEARNING_WEATHER_ANALIZER__DEEP_LEARNING_WEATHER_ANALIZER_IMAGE_ID_FKEY
-import com.ispy.spy.jooq.tables.Images.ImagesPath
-import com.ispy.spy.jooq.tables.records.DeepLearningWeatherAnalizerRecord
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.Images.ImagesPath
+import com.ispy.ispy.jooq.com.ispy.spy.jooq.tables.records.DeepLearningWeatherAnalizerRecord
 
 import kotlin.collections.Collection
 import kotlin.collections.List

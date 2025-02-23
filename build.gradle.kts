@@ -76,15 +76,15 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-tasks.named("compileKotlin") {
-	dependsOn("jooqGenerate")
-	mustRunAfter("jooqGenerate")
-}
-
 sourceSets {
 	main {
 		java.srcDirs("src/main/kotlin", "src/main/kotlin/com/ispy/ispy/jooq")
 	}
+}
+
+tasks.named("compileKotlin") {
+	dependsOn("jooqGenerate")
+	mustRunAfter("jooqGenerate")
 }
 
 tasks.register<JavaExec>("generateJooq") {
