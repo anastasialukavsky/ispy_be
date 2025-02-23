@@ -66,14 +66,6 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-sourceSets {
-	main {
-		kotlin {
-			srcDirs("src/main/kotlin", "src/main/kotlin/com/ispy/ispy/jooq")
-		}
-	}
-}
-
 kotlin {
 	compilerOptions {
 		freeCompilerArgs.addAll("-Xjsr305=strict")
@@ -82,6 +74,16 @@ kotlin {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.named("compileKotlin") {
+	dependsOn("jooqGenerate")
+}
+
+sourceSets {
+	main {
+		java.srcDirs("src/main/kotlin", "src/main/kotlin/com/ispy/ispy/jooq")
+	}
 }
 
 tasks.register<JavaExec>("generateJooq") {
