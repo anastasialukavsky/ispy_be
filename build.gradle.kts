@@ -98,7 +98,7 @@ tasks.register("jooqGenerate") {
 		val username = "postgres"
 		val password = "postgrespass"
 		val packageName = "com.ispy.ispy.jooq"
-		val outputDirectory = file("${projectDir}/src/main/kotlin/com/ispy/ispy/jooq").absolutePath
+		val outputDirectory = file("${projectDir}/src/main/kotlin").absolutePath
 
 		val jooqConfiguration = Configuration()
 			.withJdbc(
