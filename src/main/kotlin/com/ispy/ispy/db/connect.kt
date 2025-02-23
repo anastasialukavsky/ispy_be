@@ -3,9 +3,9 @@ package com.ispy.ispy.db
 import java.sql.DriverManager
 
 fun main() {
-    val userName = "alukavsky"
+    val userName = "postgres"
     val password = "postgrespass"
-    val url = "jdbc:postgresql://localhost:5432/ispy_db"
+    val url = "jdbc:postgresql://ispy-db.c10m0gowa0gw.us-east-1.rds.amazonaws.com:5432/postgres"
 
 
     try {
