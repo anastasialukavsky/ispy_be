@@ -39,6 +39,4 @@ class S3Controller(val s3Service: S3Service) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating presigned URL")
         }
     }
-
-
 }
