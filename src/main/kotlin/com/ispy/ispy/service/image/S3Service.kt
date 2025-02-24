@@ -88,15 +88,4 @@ class S3Service {
         return presignedUrl
     }
 
-
-
-
-
-
-
-
-
-
-
-
 }
