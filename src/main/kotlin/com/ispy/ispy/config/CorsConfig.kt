@@ -35,11 +35,11 @@ class CorsConfig : WebMvcConfigurer {
 //        source.registerCorsConfiguration("/**", configuration)
 //        return source
 //    }
-override fun addCorsMappings(registry: CorsRegistry) {
-    registry.addMapping("/api/**")
-        .allowedOrigins("https://app.ispy.digital")
-        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-        .allowedHeaders("*")
-        .allowCredentials(true)
-}
+//override fun addCorsMappings(registry: CorsRegistry) {
+//    registry.addMapping("/api/**")
+//        .allowedOrigins("https://app.ispy.digital")
+//        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+//        .allowedHeaders("*")
+//        .allowCredentials(true)
+//}
 }
