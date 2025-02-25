@@ -61,15 +61,12 @@ jobs:
 
             echo "🛑 Stopping old backend container..."
             docker-compose down || true
-
-            echo "🚀 Updating Docker Compose service..."
-            sed -i 's|image: .*|image: '"${{ secrets.DOCKERHUB_USERNAME }}/ispy_be-backend:latest"'|' docker-compose.yml
-
-            echo "🚀 Starting new backend container..."
+            
+            echo "🚀 Running docker-compose up"
             SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
             SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
             SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \
-            docker-compose up -d --build backend-service
+            docker-compose up -d --build
 
             echo "🔄 Restarting Nginx..."
             sudo systemctl restart nginx
