@@ -38,9 +38,12 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker-compose build
-          docker tag ispy_be-backend ${{ secrets.DOCKERHUB_USERNAME }}/ispy-backend:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ispy-backend:latest
+          docker build \
+            --build-arg SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
+            --build-arg SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
+            --build-arg SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/ispy_be-backend:latest .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ispy_be-backend:latest
 
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v0.1.7
@@ -50,25 +53,25 @@ jobs:
           key: "${{ secrets.EC2_SSH_KEY }}"
           script: |
             echo "🚀 Deploying backend to EC2..."
-            
-            cd ~/ispy_be || exit 1 
-            
+
+            cd ~/ispy_be || exit 1
+
+            echo "⬇️ Pulling latest backend image..."
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/ispy_be-backend:latest
+
             echo "🛑 Stopping old backend container..."
-            docker stop backend-service || true
-            docker rm backend-service || true
-            
-            echo "⬇️ Pulling new backend image..."
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/ispy-backend:latest
-            
-            echo "🚀 Running new backend container..."
-            docker run -d --name backend-service -p 8080:8080 \
-              -e SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
-              -e SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
-              -e SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \
-              --restart always \
-              ${{ secrets.DOCKERHUB_USERNAME }}/ispy-backend:latest
-            
+            docker-compose down || true
+
+            echo "🚀 Updating Docker Compose service..."
+            sed -i 's|image: .*|image: '"${{ secrets.DOCKERHUB_USERNAME }}/ispy_be-backend:latest"'|' docker-compose.yml
+
+            echo "🚀 Starting new backend container..."
+            SPRING_DATASOURCE_URL=${{ secrets.SPRING_DATASOURCE_URL }} \
+            SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }} \
+            SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }} \
+            docker-compose up -d --build backend-service
+
             echo "🔄 Restarting Nginx..."
             sudo systemctl restart nginx
-            
+
             echo "✅ Backend deployment complete!"
