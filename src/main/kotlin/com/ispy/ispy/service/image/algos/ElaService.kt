@@ -2,7 +2,7 @@ package com.ispy.ispy.service.image.algos
 
 import com.ispy.ispy.dto.image.algos.ElaDTO
 import com.ispy.ispy.dto.image.algos.ElaInputDTO
-import com.ispy.spy.jooq.tables.references.ELA_RESULTS
+import com.ispy.ispy.jooq.tables.references.ELA_RESULTS
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service

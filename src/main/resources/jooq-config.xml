@@ -3,9 +3,9 @@
     <!-- Configure the database connection here -->
     <jdbc>
         <driver>org.postgresql.Driver</driver>
-        <url>jdbc:postgresql://localhost:5432/ispy_db</url>
-        <user>anastasialukavsky</user>
-        <password>postgrespass</password>
+        <url>${SPRING_DATASOURCE_URL}</url>
+        <user>${SPRING_DATASOURCE_USERNAME}</user>
+        <password>${SPRING_DATASOURCE_PASSWORD}</password>
     </jdbc>
 
     <generator>
@@ -35,14 +35,23 @@
                  (A Java regular expression. Use the pipe to separate several expressions).
                  Excludes match before includes, i.e. excludes have a higher priority -->
             <excludes></excludes>
+
+            <!-- Force mapping of PostgreSQL ENUMs to Kotlin enums -->
+            <forcedTypes>
+                <forcedType>
+                    <name>com.ispy.ispy.jooq.enums.UserRole</name>
+                    <userType>com.ispy.ispy.jooq.enums.UserRole</userType>
+                    <expression>user_role</expression>
+                </forcedType>
+            </forcedTypes>
         </database>
 
         <target>
             <!-- The destination package of your generated classes (within the destination directory) -->
-            <packageName>com.ispy.spy.jooq</packageName>
+            <packageName>com.ispy.ispy.jooq</packageName>
 
             <!-- The destination directory of your generated classes. -->
-            <directory>src/main/kotlin/com/ispy/ispy/jooq</directory>
+            <directory>${project.basedir}/src/main/kotlin</directory>
         </target>
     </generator>
 </configuration>

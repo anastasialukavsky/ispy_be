@@ -3,6 +3,7 @@ import org.jooq.codegen.GenerationTool
 import org.jooq.meta.jaxb.*
 import org.jooq.meta.jaxb.Configuration
 import org.jooq.meta.jaxb.Target
+import java.net.URLClassLoader
 
 plugins {
 	kotlin("jvm") version "1.9.20"
@@ -43,6 +44,7 @@ dependencies {
 	implementation("org.jooq:jooq-meta:3.19.13")
 	implementation("org.jooq:jooq-codegen:3.19.13")
 	implementation("io.jsonwebtoken:jjwt-api:0.11.2")
+	jooqCodegen("org.postgresql:postgresql:42.5.4")
 	implementation("com.graphql-java:graphql-java-extended-scalars:22.0")
 	implementation ("org.springframework.security:spring-security-crypto:6.1.4")
 	implementation("com.google.api-client:google-api-client:1.33.0")
@@ -64,7 +66,6 @@ dependencies {
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
-
 kotlin {
 	compilerOptions {
 		freeCompilerArgs.addAll("-Xjsr305=strict")
@@ -75,27 +76,32 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+sourceSets {
+	main {
+		java.srcDirs("src/main/kotlin", "src/main/kotlin/com/ispy/ispy/jooq")
+	}
+}
 
+tasks.named("compileKotlin") {
+	dependsOn("jooqGenerate")
+	mustRunAfter("jooqGenerate")
+}
 
 tasks.register<JavaExec>("generateJooq") {
 	group = "jooq"
 	description = "Generates jOOQ classes from the database schema."
-
 	mainClass.set("org.jooq.codegen.GenerationTool")
-	classpath = sourceSets["main"].runtimeClasspath
+	classpath = configurations["jooqCodegen"] + sourceSets["main"].runtimeClasspath
 	args = listOf(file("src/main/resources/jooq-config.xml").absolutePath)
 }
-
-
-
 tasks.register("jooqGenerate") {
 	doLast {
 		println("Generating jOOQ code...")
-		val jdbcUrl = "jdbc:postgresql://localhost:5432/ispy_db"
-		val username = "anastasialukavsky"
-		val password = "postrespass"
-		val packageName = "com.isy.jooq"
-		val outputDirectory = "src/main/kotlin/com/ispy/jooq"
+		val jdbcUrl = "jdbc:postgresql://ispy-db.c10m0gowa0gw.us-east-1.rds.amazonaws.com:5432/postgres"
+		val username = "postgres"
+		val password = "postgrespass"
+		val packageName = "com.ispy.ispy.jooq"
+		val outputDirectory = file("${projectDir}/src/main/kotlin").absolutePath
 
 
 		val jooqConfiguration = Configuration()
@@ -116,16 +122,17 @@ tasks.register("jooqGenerate") {
 							.withInputSchema("public")
 							.withIncludes(".*")
 							.withExcludes("databasechangelog|databasechangeloglock")
-
 					)
 					.withTarget(
 						Target()
 							.withPackageName(packageName)
 							.withDirectory(outputDirectory)
 					)
-
 			)
 
+		val urls = configurations["jooqCodegen"].files.map { it.toURI().toURL() }.toTypedArray()
+		val classLoader = URLClassLoader(urls, Thread.currentThread().contextClassLoader)
+		Thread.currentThread().contextClassLoader = classLoader
 
 		GenerationTool.generate(jooqConfiguration)
 		println("jOOQ generation completed.")

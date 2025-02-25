@@ -3,19 +3,16 @@ package com.ispy.ispy.service.auth
 import com.ispy.ispy.dto.UserDTO
 import com.ispy.ispy.dto.auth.AuthSignUpInputDTO
 import com.ispy.ispy.dto.auth.AuthSignUpPayloadDTO
-import com.ispy.ispy.service.user.UserService
 import com.ispy.ispy.utils.authUtils.AuthUtils
 import com.ispy.ispy.utils.jwtUtils.JwtUtils
 import com.ispy.ispy.utils.userUtils.CustomUserDetails
-import com.ispy.spy.jooq.tables.references.USERS
+import com.ispy.ispy.jooq.tables.references.USERS
 import org.jooq.DSLContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 //import org.springframework.security.crypto.bcrypt.BCrypt
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.ZoneOffset
 import java.util.*
 
 @Service

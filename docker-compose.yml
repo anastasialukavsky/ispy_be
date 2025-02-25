@@ -1,49 +1,19 @@
 services:
   backend:
     build:
-      context: /Users/anastasialukavsky/Downloads/ispy
+      context: .
       dockerfile: Dockerfile
     container_name: backend-service
     ports:
       - "8080:8080"
     networks:
       - app-network
-    environment:
-       - SPRING_DATASOURCE_URL
-       - SPRING_DATASOURCE_USERNAME
-       - SPRING_DATASOURCE_PASSWORD
-       - SPRING_JPA_HIBERNATE_DDL_AUTO
-       - AWS_REGION
-       - AWS_ACCESS_KEY_ID
-       - AWS_SECRET_ACCESS_KEY
-       - S3_BUCKET_NAME
-
-  postgres:
-    image: postgres:15
-    container_name: postgres-db
-    restart: always
     env_file:
       - .env
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-      - POSTGRES_DB
-    ports:
-      - "5432:5432"
-    networks:
-      - app-network
-
-  frontend:
-    build:
-      context: /Users/anastasialukavsky/FULLSTACK/img_detective/img-detective
-      dockerfile: Dockerfile
-    container_name: frontend-service
-    ports:
-      - "3000:80"
-    networks:
-      - app-network
-    environment:
-      - REACT_APP_API_URL=http://backend:8080/graphql
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://ispy-db.c10m0gowa0gw.us-east-1.rds.amazonaws.com:5432/postgres"
+      SPRING_DATASOURCE_USERNAME: "${SPRING_DATASOURCE_USERNAME}"
+      SPRING_DATASOURCE_PASSWORD: "${SPRING_DATASOURCE_PASSWORD}"
 
 networks:
   app-network:
