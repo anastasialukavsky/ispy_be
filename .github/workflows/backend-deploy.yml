@@ -68,7 +68,6 @@ jobs:
               --restart always \
               ${{ secrets.DOCKERHUB_USERNAME }}/ispy-backend:latest
             
-            # Restart Nginx to update routing
             echo "🔄 Restarting Nginx..."
             sudo systemctl restart nginx
             
